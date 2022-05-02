@@ -152,7 +152,7 @@
 
 <script>
  export default{
-     
+     name:'MyFooter'
  }
 </script>
 

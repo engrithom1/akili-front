@@ -1,9 +1,6 @@
 
 <template>
     <section class="padding-bottom">
-        <header class="section-heading heading-line">
-                <h4 class="title-section text-uppercase">MEN'S SHOES FASHION</h4>
-        </header>
 		<div class="card product-details">
 			<div class="container-fliud">
 				<div class="wrapper row">

@@ -64,6 +64,7 @@
                                 <a href="#" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-shopping-cart"></i>
+                                        <span class="notify">{{cart}}</span>
                                     </div>
                                     <small class="text">Cart</small>
                                 </a>
@@ -118,7 +119,10 @@
 
 <script>
 export default {
-
+     name: 'NavBar',
+     props:{
+         'cart':Number
+     }
 }
 </script>
 

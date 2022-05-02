@@ -3,6 +3,7 @@ import HomePage from '../views/HomePage.vue'
 import Ourservices from '../views/OurServices.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 
+
 const routes = [
   {
     path: '/',

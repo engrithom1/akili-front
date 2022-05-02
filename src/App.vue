@@ -1,10 +1,10 @@
 
 <template>
-  <navbar/>
+  <Navbar cart="5"/>
   <div class="container body-container">  
   <router-view/>
   </div>
-  <my-footer/>
+  <Footer/>
 <!--footer-->
 </template>
 
@@ -14,8 +14,8 @@
 
     export default{
         components:{
-          'navbar': Navbar,
-          'my-footer': Footer
+          Navbar,
+          Footer
         }
     }
 </script>
