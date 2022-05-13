@@ -172,6 +172,13 @@ export default createStore({
 
     },
     actions:{
+        createOrder({state},order){
+            axios.post(state.api_url+'/create-order',order).then(response =>{
+               if(response.data === 'created'){
+                  window.location.replace('/'); 
+               }
+            })
+        },
         loginUser({state,commit},user){
             axios.post(state.api_url+'/login',user).then(response =>{
                

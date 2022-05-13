@@ -116,12 +116,20 @@ export default {
    
    methods:{
        createOrder(){
-           //this.v$.$validate();
-           if(this.user.fullname && this.user.address && this.user.region){
-              alert('form submited')
+           var order = {
+               user:this.user,
+               items:this.items,
+               total_price:this.totalPrice
+           }
+              
+           
+            if(this.user.fullname && this.user.address && this.user.region){
+               this.$store.dispatch('createOrder',order)
+              
            }else{
+               //console.log(this.user)
                alert('fill required information')
-           }         
+           }   
        },
        createOrderWhatsapp(){
            //this.v$.$validate();
@@ -129,7 +137,7 @@ export default {
                window.location.href = this.whatsappText
               
            }else{
-               console.log(this.user)
+               //console.log(this.user)
                alert('fill required information')
            }         
        }
@@ -166,7 +174,7 @@ export default {
      .whatsapp{
          color:#fff;
          background-color: #25D366;
-         border: #fff 1px solid;
+         border: #25D366 1px solid;
      }
       .whatsapp:hover{
          color: #25D366;
