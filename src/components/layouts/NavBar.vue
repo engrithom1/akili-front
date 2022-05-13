@@ -34,41 +34,45 @@
                     <!-- col.// -->
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
+                            
+                            
+                            <div class="widget-header">
+                                <router-link to="/wishlist" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-user"></i>
-                                        <span class="notify">3</span>
+                                        <i class="fa fa-heart"></i>
+                                        <span class="notify">{{wishlist}}</span>
                                     </div>
-                                    <small class="text">My profile</small>
-                                </a>
-                            </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-comment-dots"></i>
-                                        <span class="notify">13</span>
-                                    </div>
-                                    <small class="text">Message</small>
-                                </a>
-                            </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-store"></i>
-                                    </div>
-                                    <small class="text">Orders</small>
-                                </a>
+                                    <small class="text">Wishlist</small>
+                                </router-link>
                             </div>
                             <div class="widget-header">
-                                <a href="#" class="widget-view">
+                                <router-link to="/cart" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-shopping-cart"></i>
                                         <span class="notify">{{cart}}</span>
                                     </div>
                                     <small class="text">Cart</small>
-                                </a>
+                                </router-link>
                             </div>
+
+                            <div v-if="!user.name" class="widget-header">
+                                <router-link  to="/register" class="widget-view">
+                                    <small class="text">Register</small>
+                                </router-link>
+                                 <router-link to="/login" class="widget-view">
+                                    <small class="text">Login</small>
+                                 </router-link>
+                            </div>
+                            <div v-if="user.name" class="widget-header">
+                                <router-link to="/profile" class="widget-view">
+                                    <div class="icon-area">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <small class="text">My profile</small>
+                                </router-link>
+                                
+                            </div>
+                            
                         </div>
                         <!-- widgets-wrap.// -->
                     </div>
@@ -85,8 +89,16 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                     aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
+                    
                 </button>
-
+                <div class="d-sm-none">
+                    
+                    <ul v-if="user.name" class="navbar-nav ml-md-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{ user.name }} <i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                    </ul>  
+                </div>
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav">
 
@@ -94,21 +106,21 @@
                             <router-link class="nav-link" to="/">Home</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="#">Trade shows</router-link>
+                            <router-link class="nav-link" to="#">Shop</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/services">Services</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="#">Sell with us</router-link>
+                            <router-link class="nav-link" to="#">Contact us</router-link>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ml-md-auto">
+                    
+                    <ul v-if="user.name" class="navbar-nav ml-md-auto">
                         <li class="nav-item">
-                            <router-link class="nav-link" to="#">Get the app</router-link>
+                            <a class="nav-link" @click="this.$store.dispatch('logOut')" href="#"><span>{{ user.name }} </span> <i class="fas fa-sign-out-alt"></i></a>
                         </li>
-
-                    </ul>
+                    </ul>    
                 </div>
                 <!-- collapse .// -->
             </div>
@@ -120,12 +132,26 @@
 <script>
 export default {
      name: 'NavBar',
-     props:{
-         'cart':Number
+     computed:{
+        cart(){
+            return this.$store.getters.cartItemsNumber
+        },
+        wishlist(){
+            return this.$store.getters.wishlistItemsNumber
+        },
+        user(){
+            //console.log(this.$store.getters.logedUser)
+            return this.$store.getters.logedUser
+        }
      }
 }
 </script>
 
-<style>
-
+<style scope>
+    .mobile{
+        display: flex !important;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
 </style>

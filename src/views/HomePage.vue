@@ -1,4 +1,5 @@
 <template>
+   <div class="container body-container">
   <!-- ========================= SECTION MAIN  =========================
         col-lg col-md-3 flex-lg-grow-0 -->
         <section class="section-main padding-y">
@@ -9,7 +10,6 @@
                             <nav class="nav-home-aside">
                                 <h6 class="title-category">
                                     MY MARKETS
-
                                 </h6>
                                 <ul class="menu-category">
                                     <li>
@@ -91,29 +91,8 @@
                         <div class="col-sm-6 col-md-2 popular-category">
                             <aside class="special-home-right">
                                 <h6 class="bg-warning text-center text-white mb-0 p-2">Popular category</h6>
-
-                                <div class="card-banner border-bottom">
-                                    <div class="py-3" style="width:80%">
-                                        <h6 class="card-title">Electronics</h6>
-                                        <a href="#" class="btn btn-warning btn-sm">View more</a>
-                                    </div>
-                                    <img src="assets/images/items/10.jpg" height="80" class="img-bg" />
-                                </div>
-
-                                <div class="card-banner border-bottom">
-                                    <div class="py-3" style="width:80%">
-                                        <h6 class="card-title">Home Applience</h6>
-                                        <a href="#" class="btn btn-warning btn-sm">View more</a>
-                                    </div>
-                                    <img src="assets/images/items/14.jpg" height="80" class="img-bg" />
-                                </div>
-
-                                <div class="card-banner border-bottom">
-                                    <div class="py-3" style="width:80%">
-                                        <h6 class="card-title">Furniture</h6>
-                                        <a href="#" class="btn btn-warning btn-sm">View more</a>
-                                    </div>
-                                    <img src="assets/images/items/6.jpg" height="80" class="img-bg" />
+                                <div v-for="category in categories" :key="category.id">
+                                    <TopCategory :category="category"/>
                                 </div>
                             </aside>
                         </div>
@@ -133,10 +112,10 @@
                 <div class="col-heading content-body">
                     <header class="section-heading">
                         <h3 class="section-title">Deals and offers</h3>
-                        <p>Hygiene equipments</p>
+                        <!--p>Hygiene equipments</p-->
                     </header>
                     <!-- sect-heading -->
-                    <div class="timer">
+                    <!--div class="timer">
                         <div>
                             <span class="num">04</span>
                             <small>Days</small>
@@ -153,113 +132,17 @@
                             <span class="num">02</span>
                             <small>Sec</small>
                         </div>
+                    </div-->
+                    <div class="">
+                       <img class="img img-fluid" src="assets/images/items/8.jpg"> 
                     </div>
                 </div>
                 <!-- col.// -->
                 <div class="row no-gutters items-wrap">
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/6.jpg">
-                                    <img class="pic-2" src="assets/images/items/6.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 90,000
-                                    <span>100,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/8.jpg">
-                                    <img class="pic-2" src="assets/images/items/8.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                                <span class="product-discount-label">-12%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Blue Shirt</a></h3>
-                                <div class="price">
-                                    TZS 22,000
-                                    <span>30,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/11.jpg">
-                                    <img class="pic-2" src="assets/images/items/11.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 600,000
-                                    <span>830,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/7.jpg">
-                                    <img class="pic-2" src="assets/images/items/7.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 50,000
-                                    <span>75,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-6 col-md-3 col-sm-6" v-for="product in offers" :key="product.id">
+                       <ProductTop :product="product" /> 
+                    </div> 
+                    
                 </div>
             </div>
         </section>
@@ -268,227 +151,21 @@
         <!-- =============== SECTION 1 sample 4 =============== -->
         <section class="padding-bottom">
             <header class="section-heading heading-line">
-                <h4 class="title-section text-uppercase">ITEMS WITH DISCOUNT</h4>
-            </header>
-
-            <div class="card card-home-category">
-                <div class="row">
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/6.jpg">
-                                    <img class="pic-2" src="assets/images/items/6.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 90,000
-                                    <span>100,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/tt.jpg">
-                                    <img class="pic-2" src="assets/images/items/tt.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                                <span class="product-discount-label">-12%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Blue Shirt</a></h3>
-                                <div class="price">
-                                    TZS 22,000
-                                    <span>30,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/11.jpg">
-                                    <img class="pic-2" src="assets/images/items/11.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 600,000
-                                    <span>830,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/7.jpg">
-                                    <img class="pic-2" src="assets/images/items/7.jpg">
-                                </a>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-
-                                <span class="product-discount-label">-10%</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Black Top</a></h3>
-                                <div class="price">
-                                    TZS 50,000
-                                    <span>75,000</span>
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- row.// -->
-            </div>
-            <!-- card.// -->
-        </section>
-        <!-- =============== SECTION 1 END =============== -->
-        <!-- =============== SECTION 1 sample 2 =============== -->
-        <section class="padding-bottom">
-            <header class="section-heading heading-line">
                 <h4 class="title-section text-uppercase">POPULAR PRODUCTS</h4>
             </header>
 
             <div class="card card-home-category">
                 <div class="row">
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <router-link to="/product-page">
-                                    <img class="pic-1" src="assets/images/items/7.jpg">
-                                    <img class="pic-2" src="assets/images/items/7.jpg">
-                                </router-link>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><router-link to="/product-page">Women's Black Top</router-link></h3>
-                                <div class="price">
-                                    TZS 50,000
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <router-link to="/product-page">
-                                    <img class="pic-1" src="assets/images/items/14.jpg">
-                                    <img class="pic-2" src="assets/images/items/14.jpg">
-                                </router-link>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><router-link to="/product-page">Women's Black Top</router-link></h3>
-                                <div class="price">
-                                    TZS 550,000
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <router-link to="/product-page">
-                                    <img class="pic-1" src="assets/images/items/11.jpg">
-                                    <img class="pic-2" src="assets/images/items/11.jpg">
-                                </router-link>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><router-link to="/product-page">Women's Black Top</router-link></h3>
-                                <div class="price">
-                                    TZS 1,200,000
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-sm-6">
-                        <div class="product-grid4">
-                            <div class="product-image4">
-                                <router-link to="/product-page">
-                                    <img class="pic-1" src="assets/images/items/9.jpg">
-                                    <img class="pic-2" src="assets/images/items/9.jpg">
-                                </router-link>
-                                <ul class="social">
-                                    <li><a href="#"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><router-link to="/product-page">Women's Black Top</router-link></h3>
-                                <div class="price">
-                                    TZS 20,000
-                                </div>
-                                <a class="add-to-cart" href="">ADD TO CART</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-6 col-md-3 col-sm-6" v-for="product in products" :key="product.id">
+                       <ProductTop :product="product" /> 
+                    </div>    
                 </div>
                 <!-- row.// -->
             </div>
             <!-- card.// -->
         </section>
         <!-- =============== SECTION 1 END =============== -->
-
+       
         <!-- =============== SECTION 1 sample 6 =============== -->
         <section class="padding-bottom">
             <header class="section-heading heading-line">
@@ -497,245 +174,8 @@
 
             <div class="card card-home-category">
                 <div class="row">
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/12.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 1,810,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/11.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Red Top</a></h3>
-                                <div class="price">TZS 110,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/10.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 10,500
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/9.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 710,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/6.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 50,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/8.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 110,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/12.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 1,810,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/11.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Women's Red Top</a></h3>
-                                <div class="price">TZS 110,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/9.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 10,500
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/6.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 710,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/7.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 50,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-6 col-sm-6">
-                        <div class="product-grid6">
-                            <div class="product-image6">
-                                <a href="#">
-                                    <img class="pic-1" src="assets/images/items/8.jpg">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title"><a href="#">Men's Shirt</a></h3>
-                                <div class="price">TZS 110,000
-
-                                </div>
-                            </div>
-                            <ul class="social">
-                                <li><a href=""><i class="fa fa-eye"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
+                    <div class="col-md-2 col-6 col-sm-6" v-for="product in recomendeds" :key="product.id">
+                         <RecommendedItem :product="product" />
                     </div>
                 </div>
                 <!-- row.// -->
@@ -897,11 +337,62 @@
         <article class="my-4">
             <!--img src="assets/images/banners/ad-sm.png" class="w-100" /-->
         </article>
+
+        
+    </div>    
 </template>
 
 <script>
+import axios from 'axios'
+import ProductTop from '../components/product/ProductTop.vue'
+import RecommendedItem from '../components/product/RecommendedItem.vue'
+import TopCategory from '../components/product/TopCategory.vue'
+
 export default {
-  
+  data(){
+      return {
+          products:[],
+          offers:[],
+          recomendeds:[],
+          categories:[],
+         
+      }
+  },
+  computed:{
+      
+  },
+  components:{
+    ProductTop,
+    RecommendedItem,
+    TopCategory
+  },
+  methods:{
+
+      getProducts(){
+          axios
+      .get(this.$store.state.api_url+'/products')
+      .then(response => {
+          this.products = response.data[0];
+          this.offers = response.data[1];
+          this.recomendeds = response.data[2];
+          //console.log(response.data);
+          });
+      },
+      topCategory(){
+          axios
+      .get(this.$store.state.api_url+'/top-categories')
+      .then(response => {  
+          this.categories = response.data;
+          //console.log(response.data);
+          });
+      }
+  },
+  created (){
+      
+     this.getProducts();
+     this.topCategory();
+     axios.defaults.headers.common["Authorization"] = "Bearer "+localStorage.getItem("user_token");
+  }
 }
 </script>
 

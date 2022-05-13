@@ -1,8 +1,8 @@
 
 <template>
-  <Navbar cart="5"/>
-  <div class="container body-container">  
-  <router-view/>
+  <Navbar/>
+  <div class="">  
+  <router-view :key="$route.fullPath"/>
   </div>
   <Footer/>
 <!--footer-->
@@ -16,6 +16,11 @@
         components:{
           Navbar,
           Footer
+        },
+        mounted(){
+          this.$store.commit('updateCartFromLocalStorage')
+          this.$store.commit('updateUserFromLocalStorage')
+          this.$store.commit('updateWishlistFromLocalStorage')
         }
     }
 </script>

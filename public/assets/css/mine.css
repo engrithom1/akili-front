@@ -410,8 +410,8 @@ h3.h3 {
     }
 
     .product-grid4 .social li a {
-        color: #fff;
-        background: #ff9017
+        color: #333;
+        background: #fff
     }
 
     .product-grid4 .title a {
@@ -470,7 +470,7 @@ h3.h3 {
 
     .product-grid4 {
         margin-bottom: 0px !important;
-        border-bottom: 2px #ff9017 solid;
+        border-bottom: 0px #ff9017 solid;
     }
 
     .product-grid4 .social li a {
