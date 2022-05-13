@@ -90,8 +90,8 @@
                         <div v-if="user.name" class="mt-2">
                             <h5>place your order on whatsapp or direct on this website</h5>
                             <!--https://api.whatsapp.com/send/?phone=255686255811&text=sample%20orderd%20by%20richard%20%0ALG%2045inch%20LED%20TV%20with%20amazing%20HD%20x%204%20=%204360000,%20%250AGoPro%20Digital%20camera%20x%202%20=%201100000,%20%250ATotal%20600,000&app_absent=0-->
-                            <router-link to="/register" class="back"><i class="fa fa-globe"> </i> Website</router-link>
-                            <a target="_blank" :href="this.whatsappText" class="clear-cart whatsapp"><i class="fab fa-whatsapp"> </i> Whatsapp</a>
+                            <a href="#" @click="createOrder" class="back"><i class="fa fa-globe"> </i> Website</a>
+                            <a @click="createOrderWhatsapp" href="#" class="clear-cart whatsapp"><i class="fab fa-whatsapp"> </i> Whatsapp</a>
                         </div>
                     </div>
                 </div>
@@ -104,25 +104,47 @@
 </template>
 
 <script>
-
+//import useValidate from '@vuelidate/core'
+//import {required} from '@vuelidate/validators'
 export default {
+    
     data(){
         return{
-
+          
         }
     },
    
+   methods:{
+       createOrder(){
+           //this.v$.$validate();
+           if(this.user.fullname && this.user.address && this.user.region){
+              alert('form submited')
+           }else{
+               alert('fill required information')
+           }         
+       },
+       createOrderWhatsapp(){
+           //this.v$.$validate();
+           if(this.user.fullname && this.user.address && this.user.region){
+               window.location.href = this.whatsappText
+              
+           }else{
+               console.log(this.user)
+               alert('fill required information')
+           }         
+       }
+   },
     computed:{
         items(){
             return this.$store.getters.getCartItems
         },
         whatsappText(){
-            var msg = 'sample orderd by richard'
+            var msg = 'Order by '+this.user.fullname+" from "+this.user.region+" , "+this.user.address+" , "
             let items = this.$store.getters.getCartItems
             items.forEach(function (item) {
-                msg += item.name+" x "+item.quantity+" = "+item.quantity*item.price+", "
+                msg += item.name+" x "+item.quantity+" = "+(item.quantity*item.price).toLocaleString()+", "
             });
-            msg += "Total "+this.totalPrice
+            msg += "Total "+this.totalPrice.toLocaleString()
 
             let encoded = encodeURI(msg)
 

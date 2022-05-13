@@ -13,13 +13,13 @@
                     <div class="col-xl-6 col-lg-5 col-md-6">
                         <form action="#" class="search-header">
                             <div class="input-group w-100">
-                                <select class="custom-select border-right" name="category_name">
+                                <!--select class="custom-select border-right" name="category_name">
                                     <option value="value">All</option>
                                     <option value="codex">Special</option>
                                     <option value="comments">Only best</option>
                                     <option value="content">Latest</option>
                                     <option value="content">The longest option</option>
-                                </select>
+                                </select-->
                                 <input type="text" class="form-control" placeholder="Search" />
 
                                 <div class="input-group-append">
