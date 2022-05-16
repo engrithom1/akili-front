@@ -1,8 +1,24 @@
 <template>
 
 <div class="cont">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3"></div>
+            <div v-if="errors" class="col-sm-12 col-md-6">
+
+                <div v-for="error in errors" :key="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error.value }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+            </div>
+            <div class="col-sm-12 col-md-3"></div> 
+        </div>
+        </div>
     <div class="d-flex justify-content-center h-100">
-        <div class="card mt-5">
+        <div class="card">
             <div class="card-header">
                 <h3>Sign In</h3>
                 <!--div class="d-flex justify-content-end social_icon">
@@ -61,6 +77,11 @@ export default {
             prevRoute: null
         }
     },
+    computed:{
+        errors(){
+            return this.$store.getters.authErrors
+        }
+    },
     methods:{
        handleLogin(){
           this.$store.dispatch('loginUser',this.user)
@@ -82,12 +103,11 @@ export default {
 <style scoped>
         html,
         .cont {
-            /*background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+            background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
             background-size: cover;
-            background-repeat: no-repeat;*/
+            background-repeat: no-repeat;
             padding-top: 5% !important;
             padding-bottom: 5% !important;
-           background-color: #333;
             height: 100% !important;
             font-family: 'Numans', sans-serif;
         }

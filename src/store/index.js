@@ -9,15 +9,17 @@ function updateWishlistLocalStorage(wishlist){
 }
 
 
+
 export default createStore({
 
     state:{
        user:{},
        cart:[],
+       errors:[],
        wishlist:[],
        name:'',
-       api_url:"http://localhost:8000/api",
-       api_image_url:'http://127.0.0.1:8000/images/',
+       api_url:"https://akiliadmin.dmtmelectrical.co.tz/api",//"http://localhost:8000/api",
+       api_image_url:"http://akiliadmin.dmtmelectrical.co.tz/akiliback/public/images/",//'http://127.0.0.1:8000/images/',
        quick_view:{
            name:'super hd computer display',
            desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
@@ -25,6 +27,11 @@ export default createStore({
        }
     },
     getters:{
+        authErrors(state){
+            if(state.errors){
+                return state.errors
+            }
+        },
         cartItemsNumber(state){
             if(state.cart){
                 return state.cart.length
@@ -61,6 +68,12 @@ export default createStore({
     mutations:{
         setUser(state,user){
             state.user = user
+        },
+        setErrors(state,value){
+            state.errors.push({value})
+        },
+        setZeroErrors(state){
+            state.errors = []
         },
         
         quickView(state,product){
@@ -180,6 +193,7 @@ export default createStore({
             })
         },
         loginUser({state,commit},user){
+            commit('setZeroErrors');
             axios.post(state.api_url+'/login',user).then(response =>{
                
                 
@@ -194,29 +208,60 @@ export default createStore({
                     )
                     window.location.replace('/');
   
-                }else{
-                    console.log('bad credential')
                 }
+                if(response.data.error){
+                    console.log('bad credential')
+                    commit('setErrors',response.data.error); 
+                }
+            }).catch(errors =>{
+                
+                console.log(errors)
+                console.log('bad credential')
+                commit('setErrors',errors.data.error);
+   
             })
         },
         registerUser({state,commit},user){
+            commit('setZeroErrors');
             axios.post(state.api_url+'/register',user).then(response =>{
-               
-                
-                if(response.data.user){
+                //setErrors
+                console.log(response.data)
+                if(response.data.user && response.data.token){
                     commit('setUser',response.data.user)
                     localStorage.setItem('user',JSON.stringify(response.data.user))
-                    
-                }
-                if(response.data.token){
-                    localStorage.setItem(
-                        'user_token',response.data.token
-                    )
+
+                    localStorage.setItem('user_token',response.data.token)
                     window.location.replace('/');
-  
+                    
                 }else{
-                    console.log('bad credential')
+
+                    if(response.data.name){
+                        console.log(response.data.name)
+    
+                        response.data.name.forEach((value)=>{
+                            commit('setErrors',value);
+                        });
+                    }
+                    if(response.data.phonenumber){
+                        console.log(response.data.phonenumber)
+    
+                        response.data.phonenumber.forEach((value)=>{
+                            commit('setErrors',value);
+                        });
+                    }
+                    if(response.data.password){
+                        console.log(response.data.password)
+    
+                        response.data.password.forEach((value)=>{
+                            commit('setErrors',value);
+                        });
+                    }
                 }
+            }).catch(error =>{
+                
+                console.log(error)
+
+                
             })
         },
         logOut({state,commit}){

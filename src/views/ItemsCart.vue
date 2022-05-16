@@ -135,9 +135,6 @@ export default {
         padding-left:5%;
         padding-right:5%;
     }
-    .btn{
-        padding:2px 6px;
-    }
     .summary{
         
         padding: 15px;

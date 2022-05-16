@@ -3,7 +3,7 @@
     <div class="product-grid6">
         <div class="product-image6">
             <router-link v-bind:to="'/product/'+product.slug+'/'+product.id">
-                <img class="pic-1" :src="'http://127.0.0.1:8000/images/'+product.thumb">
+                <img class="pic-1" :src="this.$store.state.api_image_url+product.thumb">
             </router-link>
         </div>
         <div class="product-content">
@@ -39,10 +39,12 @@ export default {
          },
          addToCart(){
              this.$store.commit('addToCart',this.product)
+             this.$toast.show('Added to cart');
          },
           addToWishlist(){
           //alert(this.quantity)
            this.$store.commit('addToWishlist' ,this.product)
+           this.$toast.show(`Added to wishlist`);
         }
      }
 }

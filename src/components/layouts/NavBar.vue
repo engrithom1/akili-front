@@ -103,16 +103,20 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/">Home</router-link>
+                            <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
+                            aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="/">Home</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="#">Shop</router-link>
+                            <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
+                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="#">Shop</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/services">Services</router-link>
+                            <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
+                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="/services">Services</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="#">Contact us</router-link>
+                            <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
+                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="#">Contact us</router-link>
                         </li>
                     </ul>
                     

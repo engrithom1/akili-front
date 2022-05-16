@@ -50,10 +50,13 @@ export default {
          },
          addToCart(){
              this.$store.commit('addToCart',this.product)
+             this.$toast.show('Added to cart');
+             //setTimeout(this.$toast.clear, 3000);
          },
           addToWishlist(){
           //alert(this.quantity)
            this.$store.commit('addToWishlist' ,this.product)
+           this.$toast.show(`Added to wishlist`);
         }
      }
 }

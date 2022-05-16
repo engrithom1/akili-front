@@ -123,22 +123,23 @@ export default {
            }
               
            
-            if(this.user.fullname && this.user.address && this.user.region){
+            if(this.user.fullname && this.user.address && this.user.region && this.user.phonenumber){
                this.$store.dispatch('createOrder',order)
+               this.$toast.success('Order received!');
               
            }else{
                //console.log(this.user)
-               alert('fill required information')
+               this.$toast.error('fill required fields');
            }   
        },
        createOrderWhatsapp(){
            //this.v$.$validate();
-           if(this.user.fullname && this.user.address && this.user.region){
+           if(this.user.fullname && this.user.address && this.user.region && this.user.phonenumber){
                window.location.href = this.whatsappText
               
            }else{
                //console.log(this.user)
-               alert('fill required information')
+               this.$toast.error('fill required fields');
            }         
        }
    },

@@ -7,7 +7,7 @@
 				<div class="wrapper row">
 					<div class="col-md-5">
 						
-					<img :src="'http://localhost:8000/images/'+product.thumb" />
+					<img :src="this.$store.state.api_image_url+product.thumb" />
 						
 					</div>
 					<div class="details col-md-7 mt-3">

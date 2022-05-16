@@ -162,7 +162,7 @@
                         <div class="row">
                             
                             <div class="col-md-5 text-center col-sm-12 py-5 px-sm-5">
-                                <img class="img img-fluid" :src="'http://localhost:8000/images/'+this.$store.state.quick_view.thumb" />
+                                <img class="img img-fluid" :src="this.$store.state.api_image_url+this.$store.state.quick_view.thumb" />
                             </div>
                             <div class="col-md-7 text-center col-sm-12 py-5 px-sm-5">
                                 <h2 class="mt-2">{{ this.$store.state.quick_view.name }}</h2>
@@ -187,7 +187,7 @@
                                 <div class="action">
                                     <router-link class="add-to-cart btn btn-default" @click="addToCart" to="/cart" type="button" data-dismiss="modal" aria-label="Close">add to cart</router-link>
                                     <router-link class="buy-now btn btn-default" @click="addToCart" to="/checkout" type="button" data-dismiss="modal" aria-label="Close">buy now</router-link>
-                                    <button class="like btn btn-default" @click="addToWishlist" type="button" data-dismiss="modal" aria-label="Close"><span class="fa fa-heart"></span></button>
+                                    <router-link class="like btn btn-default" @click="addToWishlist" to="/wishlist" type="button" data-dismiss="modal" aria-label="Close"><span class="fa fa-heart"></span></router-link>
                                 </div>
                             </div>
                             <div class="col-md-12 text-center pt-2 pb-5 px-sm-5 ">  
