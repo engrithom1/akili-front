@@ -95,7 +95,8 @@
                     
                     <ul v-if="user.name" class="navbar-nav ml-md-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{ user.name }} <i class="fas fa-sign-out-alt"></i></a>
+                            <a v-if="user.name.length < 11" class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{ user.name }} <i class="fas fa-sign-out-alt"></i></a>
+                            <a v-else class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{  user.name.substring(0,10)+".." }} <i class="fas fa-sign-out-alt"></i></a>
                         </li>
                     </ul>  
                 </div>
@@ -106,10 +107,10 @@
                             <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
                             aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="/">Home</router-link>
                         </li>
-                        <li class="nav-item">
+                        <!--li class="nav-item">
                             <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
                     aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="#">Shop</router-link>
-                        </li>
+                        </li-->
                         <li class="nav-item">
                             <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
                     aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="/services">Services</router-link>
@@ -122,7 +123,8 @@
                     
                     <ul v-if="user.name" class="navbar-nav ml-md-auto">
                         <li class="nav-item">
-                            <a class="nav-link" @click="this.$store.dispatch('logOut')" href="#"><span>{{ user.name }} </span> <i class="fas fa-sign-out-alt"></i></a>
+                            <a v-if="user.name.length < 11" class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{ user.name }} <i class="fas fa-sign-out-alt"></i></a>
+                            <a v-else class="nav-link" href="#" @click="this.$store.dispatch('logOut')">{{  user.name.substring(0,10)+".." }} <i class="fas fa-sign-out-alt"></i></a>
                         </li>
                     </ul>    
                 </div>

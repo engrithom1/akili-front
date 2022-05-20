@@ -12,7 +12,7 @@
                     </header>
                     <!-- sect-heading -->
                     
-                    <div class="img-banner d-xs-none">
+                    <div class="add-image">
                        <img class="img img-fluid" :src="this.$store.state.api_image_url+category.banner"> 
                     </div>
                 </div>

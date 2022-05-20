@@ -7,7 +7,7 @@
                 <h4 class="title-section text-uppercase">ITEMS IN CART</h4>
             </header>
 
-           <div class="card card-home-category product-details">
+           <div v-if="totalPrice" class="card card-home-category product-details">
              
                 <div v-for="product in items" :key="product.id" class="item-row">
                     <CartItem :product="product"/>
@@ -31,6 +31,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-if="!totalPrice" class="card card-home-category product-details">
+                <img src="assets/images/logos/empty.png" class="img img-fluid" alt=""/>
+                <h4 class="text-center">Empty Cart!</h4>
             </div>
             <!-- card.// -->
         </section>

@@ -1469,6 +1469,10 @@ a[class*='card']:hover .title {
     .dropdown-large {
         min-width: 500px
     }
+
+    .section-heading {
+        margin-left: 10px;
+    }
 }
 
 .form-inline input[type='number'] {

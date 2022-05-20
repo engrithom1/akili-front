@@ -6,7 +6,7 @@
             <main class="card">
                 <div class="card-body">
                     <div class="row">
-                        <aside class=" col-lg col-md-3 flex-lg-grow-0">
+                        <aside class="col-lg col-md-3 flex-lg-grow-0">
                             <nav class="nav-home-aside">
                                 <h6 class="title-category">
                                     MY MARKETS
@@ -133,8 +133,10 @@
                             <small>Sec</small>
                         </div>
                     </div-->
-                    <div class="">
-                       <img class="img img-fluid" src="assets/images/items/8.jpg"> 
+                    <div class="add-image">
+                       <router-link to="/">
+                           <img class="img img-fluid" src="assets/images/items/8.jpg">
+                       </router-link> 
                     </div>
                 </div>
                 <!-- col.// -->

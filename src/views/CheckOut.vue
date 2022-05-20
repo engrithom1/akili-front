@@ -7,7 +7,7 @@
                 <h4 class="title-section text-uppercase">CHECKOUT</h4>
             </header>
 
-           <div class="card card-home-category product-details">
+           <div v-if="totalPrice" class="card card-home-category product-details">
                 <!-- row.// -->
                
                 <div class="row">
@@ -95,6 +95,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div v-if="!totalPrice" class="card card-home-category product-details">
+                <img src="assets/images/logos/empty.png" class="img img-fluid" alt=""/>
+                <h4 class="text-center">Nothing to Checkout!</h4>
             </div>
             <!-- card.// -->
         </section>

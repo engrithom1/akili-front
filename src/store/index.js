@@ -18,8 +18,8 @@ export default createStore({
        errors:[],
        wishlist:[],
        name:'',
-       api_url:"https://akiliadmin.dmtmelectrical.co.tz/api",//"http://localhost:8000/api",
-       api_image_url:"http://akiliadmin.dmtmelectrical.co.tz/akiliback/public/images/",//'http://127.0.0.1:8000/images/',
+       api_url:"http://localhost:8000/api",//"https://akiliadmin.dmtmelectrical.co.tz/api",
+       api_image_url:"http://127.0.0.1:8000/images/",//'http://akiliadmin.dmtmelectrical.co.tz/akiliback/public/images/',
        quick_view:{
            name:'super hd computer display',
            desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
@@ -185,9 +185,10 @@ export default createStore({
 
     },
     actions:{
-        createOrder({state},order){
+        createOrder({state,commit},order){
             axios.post(state.api_url+'/create-order',order).then(response =>{
                if(response.data === 'created'){
+                  commit('clearCart')
                   window.location.replace('/'); 
                }
             })
