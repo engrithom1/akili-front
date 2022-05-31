@@ -4,7 +4,15 @@
     <section class="padding-bottom">
 		<div class="card product-details">
 			<div class="container-fliud">
-				<div class="wrapper row">
+        <div class="wrapper row" v-if="!product.id">
+          <div class="col-12 text-center h-100" >
+              <img width="50" height="50" src="/assets/images/icons/loading.gif" class="img img-fluid mt-5" alt=""/>
+          </div>
+        </div>  
+				<div class="wrapper row" v-if="product.id">
+          <div class="col-12 text-center h-100" v-if="!product.id">
+              <img width="50" height="50" src="/assets/images/icons/loading.gif" class="img img-fluid mt-5" alt=""/>
+          </div>
 					<div class="col-md-5">
 						
 					<img :src="this.$store.state.api_image_url+product.thumb" />
@@ -15,26 +23,24 @@
 						
 						<p class="product-description">{{ product.desc}}</p>
 						<h5 class="price">current price : <span v-if="product.percent">TZS {{ product.price - (product.price * product.percent/100) }}</span> <span v-if="!product.percent">TZS {{ product.price }}</span></h5>
-						
-						
-						
-                        <div class="mt-5">
-                            <div class="row">
-                                
-                                <div class="col-sm-4 col-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-dark btn-sm" @click="subItems" id="minus-btn"><i class="fa fa-minus"></i></button>
-                                        </div>
-                                        <input type="text" id="qty_input" v-model="quantity" class="form-control"  readonly>
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-dark btn-sm"  @click="addItems" id="plus-btn"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8 col-6"></div>
+					  <router-link :to="'/category/'+product.category_id"><h5 class="price">{{product.category}}</h5></router-link>
+            <div class="mt-5">
+                <div class="row">
+                    
+                    <div class="col-sm-4 col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-dark btn-sm" @click="subItems" id="minus-btn"><i class="fa fa-minus"></i></button>
+                            </div>
+                            <input type="text" id="qty_input" v-model="quantity" class="form-control"  readonly>
+                            <div class="input-group-prepend">
+                                <button class="btn btn-dark btn-sm"  @click="addItems" id="plus-btn"><i class="fa fa-plus"></i></button>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-8 col-6"></div>
+                </div>
+            </div>
                          
 						<div class="action">
 							<router-link class="add-to-cart btn btn-default" @click="addToCart" type="button" to="/cart">add to cart</router-link>

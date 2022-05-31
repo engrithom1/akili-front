@@ -11,6 +11,9 @@ import Cart from "../views/ItemsCart.vue"
 import Wishlist from "../views/WishList.vue"
 import Checkout from "../views/CheckOut.vue"
 import CategoryPage from "../views/CategoryPage.vue"
+import TagsPage from "../views/TagsPage.vue"
+import Profile from '../views/MyProfile.vue'
+import Contact from '../views/ContactUs.vue'
 
 
 const routes = [
@@ -25,6 +28,11 @@ const routes = [
     component: Ourservices
   },
   {
+    path: '/contacts',
+    name: 'contact',
+    component: Contact
+  },
+  {
     path: '/product/:any/:id',
     name: 'product_page',
     component: ProductDetails
@@ -33,6 +41,11 @@ const routes = [
     path: '/category/:id',
     name: 'category_page',
     component: CategoryPage
+  },
+  {
+    path: '/tag/:id',
+    name: 'tag_page',
+    component: TagsPage
   },
   {
     path: '/register',
@@ -73,6 +86,18 @@ const routes = [
     name: 'checkout',
     component: Checkout
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile,
+    beforeEnter: (to, from, next) => {
+      if(store.state.user.name) {
+          next();
+      } else {
+          next({path:'/'});
+      }
+  }
+  }
 ]
 
 const router = createRouter({

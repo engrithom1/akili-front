@@ -44,6 +44,7 @@
                                     <option value="Ruvuma">Ruvuma</option>
                                     <option value="Shinyanga">Shinyanga</option>
                                     <option value="Singida">Singida</option>
+                                    <option value="Singida">Songwe</option>
                                     <option value="Tabora">Tabora</option>
                                     <option value="Tanga">Tanga</option>
                                     <option value="Manyala">Manyara</option>
@@ -61,11 +62,17 @@
                                 <label for="phone">Phone</label>
                                 <input type="text" class="form-control" v-model="user.phonenumber" id="phone" placeholder="House number and street">
                             </div>
+                            <div class="form-group">
+                                <label for="phone">Any thing</label>
+                                <textarea class="form-control" v-model="user_desc" id="phone" placeholder="Any thing to say(chochote sema kuhusu order yako)" rows="3"></textarea>
+                            </div>
                             
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-7">
+                        <h5 class="text-success">* Pay on Deliver</h5>
+                        <h5 class="text-info">* Free Delivery in dar es salaam city center</h5>
                         <div class="summary">
                             <div>
                                 <p class="total"><strong>PRODUCT</strong></p>
@@ -98,7 +105,7 @@
             </div>
 
             <div v-if="!totalPrice" class="card card-home-category product-details">
-                <img src="assets/images/logos/empty.png" class="img img-fluid" alt=""/>
+                <img src="/assets/images/logos/empty.png" class="img img-fluid" alt=""/>
                 <h4 class="text-center">Nothing to Checkout!</h4>
             </div>
             <!-- card.// -->
@@ -115,7 +122,7 @@ export default {
     
     data(){
         return{
-          
+          user_desc:""
         }
     },
    
@@ -124,7 +131,8 @@ export default {
            var order = {
                user:this.user,
                items:this.items,
-               total_price:this.totalPrice
+               total_price:this.totalPrice,
+               user_desc:this.user_desc
            }
               
            
@@ -162,7 +170,7 @@ export default {
 
             let encoded = encodeURI(msg)
 
-            return "https://api.whatsapp.com/send/?phone=255686255811&text="+encoded+"&app_absent=0"
+            return "https://api.whatsapp.com/send/?phone=255759100526&text="+encoded+"&app_absent=0"
         },
         user(){
             //console.log(this.$store.getters.logedUser)

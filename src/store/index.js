@@ -18,8 +18,8 @@ export default createStore({
        errors:[],
        wishlist:[],
        name:'',
-       api_url:"http://localhost:8000/api",//"https://akiliadmin.dmtmelectrical.co.tz/api",
-       api_image_url:"http://127.0.0.1:8000/images/",//'http://akiliadmin.dmtmelectrical.co.tz/akiliback/public/images/',
+       api_url:"http://localhost:8000/api",//"https://leoleomarket.co.tz/akiliadmin/api  https://akiliadmin.dmtmelectrical.co.tz/api",
+       api_image_url:"http://127.0.0.1:8000/images/",//'https://leoleomarket.co.tz/akiliadmin/akiliback/public/images/ http://akiliadmin.dmtmelectrical.co.tz/akiliback/public/images/',
        quick_view:{
            name:'super hd computer display',
            desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
@@ -27,6 +27,7 @@ export default createStore({
        }
     },
     getters:{
+        
         authErrors(state){
             if(state.errors){
                 return state.errors
@@ -66,6 +67,7 @@ export default createStore({
         }
     },
     mutations:{
+    
         setUser(state,user){
             state.user = user
         },

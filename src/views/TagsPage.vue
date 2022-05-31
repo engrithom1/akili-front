@@ -72,7 +72,7 @@
 import axios from 'axios'
 import ProductTop from '../components/product/ProductTop.vue'
 import RecommendedItem from '../components/product/RecommendedItem.vue'
-import TopCategory from '../components/product/TopCategory.vue'
+
 
 export default {
     
@@ -95,13 +95,12 @@ export default {
   components:{
     ProductTop,
     RecommendedItem,
-    TopCategory
   },
   methods:{
 
       getProducts(id){
           axios
-      .get(this.$store.state.api_url+'/products-category/'+id)
+      .get(this.$store.state.api_url+'/products-tag/'+id)
       .then(response => {
           this.products = response.data[0];
           this.recomendeds = response.data[1];
@@ -110,7 +109,7 @@ export default {
       },
       getCategory(id){
           axios
-      .get(this.$store.state.api_url+'/get-category/'+id)
+      .get(this.$store.state.api_url+'/get-tag/'+id)
       .then(response => {  
           this.category = response.data;
           console.log(response.data);

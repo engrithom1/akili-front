@@ -20,7 +20,7 @@
             </div>
             <!-- card.// -->
             <div v-if="!items.length" class="card card-home-category product-details">
-                <img src="assets/images/logos/empty.png" class="img img-fluid" alt=""/>
+                <img src="/assets/images/logos/empty.png" class="img img-fluid" alt=""/>
                 <h4 class="text-center">Empty wishlist!</h4>
             </div>
         </section>

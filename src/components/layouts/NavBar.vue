@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-3 col-md-12">
-                        <a href="#" class="brand-wrap">
-                            <img src="assets/images/logos/logodemo.png" height="50px" alt=""/>
+                        <a href="/" class="brand-wrap">
+                            <img src="/assets/images/logos/leoleo.png" height="55px" alt="leoleomarket"/>
                         </a>
                         <!-- brand-wrap.// -->
                     </div>
@@ -117,7 +117,7 @@
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" data-toggle="collapse" data-target="#main_nav"
-                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="#">Contact us</router-link>
+                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation" to="/contacts">Contact us</router-link>
                         </li>
                     </ul>
                     

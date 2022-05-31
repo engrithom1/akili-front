@@ -12,30 +12,15 @@
                                     MY MARKETS
                                 </h6>
                                 <ul class="menu-category">
-                                    <li>
-                                        <a href="#"><span class="sp-img"><img src="assets/images/items/11.jpg"
-                                                    class="span-img" alt=""></span> Home bases</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="sp-img"><img src="assets/images/items/7.jpg"
-                                                    class="span-img" alt=""></span> Fashion accessories
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="sp-img"><img src="assets/images/items/9.jpg"
-                                                    class="span-img" alt=""></span>Music accessories
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="sp-img"><img src="assets/images/items/12.jpg"
-                                                    class="span-img" alt=""></span> Scanners and Printer</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="sp-img"><img src="assets/images/items/6.jpg"
-                                                    class="span-img" alt=""></span> Sofa sets</a>
+                                    <li  v-for="tag in tags" :key="tag.id">
+                                        <router-link :to="'/tag/'+tag.id"><span class="sp-img"><img :src="this.$store.state.api_image_url+tag.thumb"
+                                                    class="span-img" alt=""></span> {{ tag.name }}</router-link>
                                     </li>
 
                                 </ul>
+                                <div class="text-center h-100" v-if="!tags.length">
+                                    <img width="50" height="50" src="assets/images/icons/loading.gif" class="img img-fluid mt-5" alt=""/>
+                                </div>
                             </nav>
                         </aside>
                         <!-- col.// -->
@@ -89,10 +74,13 @@
                         </div>
                         <!-- col.//col-md d-none d-lg-block flex-grow-1 -->
                         <div class="col-sm-6 col-md-2 popular-category">
-                            <aside class="special-home-right">
+                            <aside class="special-home-right h-100">
                                 <h6 class="bg-warning text-center text-white mb-0 p-2">Popular category</h6>
                                 <div v-for="category in categories" :key="category.id">
                                     <TopCategory :category="category"/>
+                                </div>
+                                <div class="text-center h-100" v-if="!categories.length">
+                                    <img width="50" height="50" src="assets/images/icons/loading.gif" class="img img-fluid mt-5" alt=""/>
                                 </div>
                             </aside>
                         </div>
@@ -135,7 +123,7 @@
                     </div-->
                     <div class="add-image">
                        <router-link to="/">
-                           <img class="img img-fluid" src="assets/images/items/8.jpg">
+                           <img class="img img-fluid" src="/assets/images/items/8.jpg">
                        </router-link> 
                     </div>
                 </div>
@@ -143,8 +131,10 @@
                 <div class="row no-gutters items-wrap">
                     <div class="col-6 col-md-3 col-sm-6" v-for="product in offers" :key="product.id">
                        <ProductTop :product="product" /> 
-                    </div> 
-                    
+                    </div>
+                    <div v-if="!offers.length" class="col-12 text-center">
+                        <img width="50" height="50" src="/assets/images/icons/loading.gif" class="img img-fluid mt-5" alt=""/> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -160,6 +150,9 @@
                 <div class="row">
                     <div class="col-6 col-md-3 col-sm-6" v-for="product in products" :key="product.id">
                        <ProductTop :product="product" /> 
+                    </div>
+                    <div v-if="!products.length" class="col-12 text-center mb-5 mt-5">
+                        <img width="50" height="50" src="/assets/images/icons/loading.gif" class="img img-fluid loading-img" alt=""/> 
                     </div>    
                 </div>
                 <!-- row.// -->
@@ -176,8 +169,19 @@
 
             <div class="card card-home-category">
                 <div class="row">
-                    <div class="col-md-2 col-6 col-sm-6" v-for="product in recomendeds" :key="product.id">
+                    <div class="col-md-2 col-6 col-sm-6" v-for="product in recommendeds" :key="product.id">
                          <RecommendedItem :product="product" />
+                    </div>
+
+                    
+
+                    <div v-if="!recomendeds.length" class="col-12 text-center mb-5 mt-5">
+                        <img width="50" height="50" src="/assets/images/icons/loading.gif" class="img img-fluid loading-img" alt=""/> 
+                    </div>
+                </div>
+                <div v-if="recomendeds.length">
+                    <div v-if="more_btn" class="text-center m-3">
+                        <button @click="moreProducts" class="btn-width">MORE PRODUCTS</button>
                     </div>
                 </div>
                 <!-- row.// -->
@@ -357,11 +361,11 @@ export default {
           offers:[],
           recomendeds:[],
           categories:[],
+          tags:[],
+          length:6,
+          more_btn:true
          
       }
-  },
-  computed:{
-      
   },
   components:{
     ProductTop,
@@ -387,17 +391,48 @@ export default {
           this.categories = response.data;
           //console.log(response.data);
           });
-      }
+      },
+      topTags(){
+          axios
+      .get(this.$store.state.api_url+'/top-tags')
+      .then(response => {  
+          this.tags = response.data;
+          console.log(response.data);
+          });
+      },
+      moreProducts(){
+
+          this.length = this.length + 6;
+
+          if (this.length >= this.recomendeds.length){
+              this.more_btn = false;
+          }
+            
+        }
+  },
+  computed: {
+        recommendeds() {
+            return this.recomendeds.slice(0, this.length);
+        }
   },
   created (){
-      
+     
+     
      this.getProducts();
      this.topCategory();
+     this.topTags();
      axios.defaults.headers.common["Authorization"] = "Bearer "+localStorage.getItem("user_token");
   }
 }
 </script>
 
 <style scoped>
-
+.loading-img{
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    
+}
 </style>
